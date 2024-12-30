@@ -39,10 +39,10 @@ const JourneySuccessModal = ({ setIsModal }) => {
                     />
                 </div>
                 <div className="success-modal-wrapper-content">
-                    <h3>BOOKING SUCCESSFUL</h3>
+                    <h3>SUBMIT SUCCESSFUL</h3>
                     <div className="close-modal">
                         <button className='btn1' onClick={() => backFunc()}>CLOSE</button>
-                        <button className='btn2' onClick={() => showRecords()}>CHECK RECORD</button>
+                        <button className='btn2' onClick={() => showRecords()}>CHECK HISTORY</button>
                     </div>
                 </div>
             </div>

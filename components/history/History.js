@@ -43,7 +43,7 @@ const History = ({ data, membership, authUser, authenticatedUser, allCommission,
                 <div className="history-section">
                     <Breadcrumb
                         authUser={authUser}
-                        title="Dealing Records"
+                        title="History"
                         link="/dashboard"
                         authenticatedUser={authenticatedUser}
                         allCommission={allCommission}
@@ -54,7 +54,7 @@ const History = ({ data, membership, authUser, authenticatedUser, allCommission,
                             <li><button onClick={() => handleFilter("all")} className={statusType === "all" ? "history-active" : ""}>View All</button></li>
                             <li><button onClick={() => handleFilter("pending")} className={statusType === "pending" ? "history-active" : ""}>Pending</button></li>
                             <li><button onClick={() => handleFilter("completed")} className={statusType === "completed" ? "history-active" : ""}>Completed</button></li>
-                            <li><button onClick={() => handleFilter("freezed")} className={statusType === "freezed" ? "history-active" : ""}>Freezed</button></li>
+                            <li><button onClick={() => handleFilter("freezed")} className={statusType === "freezed" ? "history-active" : ""}>Hold On</button></li>
                         </ul>
                     </div >
                     <div className="journey-history-card-wrapper">

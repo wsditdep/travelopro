@@ -4,9 +4,10 @@ import Breadcrumb from '../breadcrumb/Breadcrumb';
 import Image from 'next/image';
 import white_bg from "@/public/costar_assets/images/support-shadow.svg"
 import colorfull_bg from "@/public/costar_assets/images/colorfull_bg.svg"
+import Link from 'next/link';
 
 
-const Support = ({ setting, authUser, isLink, authenticatedUser, allCommission, userCommission }) => {
+const Support = ({ setting, authUser, isLink, authenticatedUser, allCommission, userCommission, support }) => {
 
     const handleAddFundsClick = () => {
         if (window.LC_API && typeof window.LC_API.open_chat_window === 'function') {
@@ -57,13 +58,19 @@ const Support = ({ setting, authUser, isLink, authenticatedUser, allCommission, 
                         />
                     </div>
                 </div>
-
+                <div className="support-info">
+                    <h3>Contact us with Livechat or Telegram</h3>
+                    <p>Agency Service Operation Time: {support?.work_time ?? ""}</p>
+                </div>
                 <div className="app-global-form invite-padding">
                     <div className="invite-friend-info">
                         <p>Working Hour</p>
-                        <h3>11:00 - 23:00</h3>
+                        <h3>{support?.work_time ?? ""}</h3>
                     </div>
-                    <button className="btn global-primary-btn mt2" onClick={() => handleAddFundsClick()}>CONTACT US</button>
+                    <button className="btn global-primary-btn mt2" onClick={() => handleAddFundsClick()}>Contact us with Livechat</button>
+                    <Link href={`${support?.link ?? ""}`} target="_blank">
+                        <button className="btn global-primary-btn">Contact us with Telegram</button>
+                    </Link>
                 </div>
             </div>
         </>

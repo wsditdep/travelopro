@@ -25,7 +25,7 @@ const Footer = () => {
                     <li className="social-media-child"><i className="fab fa-discord"></i></li>
                 </ul>
                 <div className='copyright'>
-                    <p>© Copyright 2017 - 2024. Travala.com</p>
+                    <p>© Copyright 2017 - 2025. Travelopro</p>
                 </div>
             </div>
         </>

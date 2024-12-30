@@ -85,7 +85,7 @@ const page = async () => {
                         </div>
                         <Link href="/dashboard/journey">
                             <div className="lucky-spin-wrapper">
-                                <button className="btn global-primary-btn">SHOW OPTIMIZATION</button>
+                                <button className="btn global-primary-btn">START JOURNEY</button>
                             </div>
                         </Link>
                     </div>
@@ -128,7 +128,7 @@ const page = async () => {
                                         unoptimized
                                     />
                                 </div>
-                                <p>Data Optimization</p>
+                                <p>Start Journey</p>
                             </Link>
                             <Link href="/dashboard/history">
                                 <div className="dashboard-quick-actions-inner-childs">
@@ -140,7 +140,7 @@ const page = async () => {
                                         unoptimized
                                     />
                                 </div>
-                                <p>Dealing Records</p>
+                                <p>History</p>
                             </Link>
                             <Link href="/dashboard/profile">
                                 <div className="dashboard-quick-actions-inner-childs">
@@ -267,7 +267,7 @@ const page = async () => {
                         <div className="copyrightAndLink-wrapper">
                             <div className="copyrightAndLink-parent">
                                 <div className="copyrightAndLink-child">
-                                    <h4>©2024 Travelopro</h4>
+                                    <h4>©2025 Travelopro</h4>
                                 </div>
                                 <div className="copyrightAndLink-child">
                                     <div className="copyrightAndLink-sub-child">

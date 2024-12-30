@@ -17,7 +17,7 @@ function Submit() {
             pending ?
                 <> Please wait... <i className="fa fa-circle-notch rotating-spinner"></i></>
                 :
-                `SUBMIT BOOKING`
+                `START`
         }
         </button>
     )

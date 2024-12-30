@@ -1,4 +1,4 @@
-import { fetchSetting } from '@/app/actions/notice/data';
+import { fetchSetting, fetchSupport } from '@/app/actions/notice/data';
 import { fetchAuthenticatedUser, fetchCommission } from '@/app/actions/user/data';
 import { auth } from '@/app/auth';
 import SecurityCheck from '@/components/checkSecurityCode/CheckSecurityCode';
@@ -12,6 +12,7 @@ const page = async () => {
     const user = await fetchAuthenticatedUser();
 
     const setting = await fetchSetting() || {};
+    const support = await fetchSupport() || {};
 
     const { allCommission, userCommission } = await fetchCommission();
 
@@ -19,6 +20,7 @@ const page = async () => {
         <>
             <Support
                 setting={JSON.parse(JSON.stringify(setting))}
+                support={JSON.parse(JSON.stringify(support))}
                 authUser={JSON.parse(JSON.stringify(user))}
                 authenticatedUser={JSON.parse(JSON.stringify(user))}
                 allCommission={JSON.parse(JSON.stringify(allCommission))}

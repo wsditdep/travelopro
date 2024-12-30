@@ -111,15 +111,15 @@ const Sidebar = ({ session, isWhite, authenticatedUser, userCommission, allCommi
                                             <div className='level-image'>
                                                 <Image
                                                     src={
-                                                        userMembership?.membership_name === "Basic Tour"
+                                                        userMembership?.membership_name === "Junior Traveler"
                                                             ?
                                                             vipArr[0]
                                                             :
-                                                            userMembership?.membership_name === "Silver Tour"
+                                                            userMembership?.membership_name === "Senior Traveler"
                                                                 ?
                                                                 vipArr[1]
                                                                 :
-                                                                userMembership?.membership_name === "Gold Tour"
+                                                                userMembership?.membership_name === "Expert Traveler"
                                                                     ?
                                                                     vipArr[2]
                                                                     :
