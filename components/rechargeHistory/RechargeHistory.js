@@ -9,7 +9,7 @@ const RechargeHistory = ({ history, authUser, authenticatedUser, allCommission, 
 
     return (
         <>
-            <div className='background-color'>
+            <div className='background-color page_animation'>
                 <section className="withdrawal-hostory-section recharge-history-section">
                     <Breadcrumb
                         authUser={authUser}

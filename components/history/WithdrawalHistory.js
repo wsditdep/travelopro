@@ -34,7 +34,7 @@ const WithdrawalHistory = ({ withdrawal, authUser, authenticatedUser, allCommiss
 
     return (
         <>
-            <div className='background-color'>
+            <div className='background-color page_animation'>
                 <Breadcrumb
                     authUser={authUser}
                     title="Withdraw History"
