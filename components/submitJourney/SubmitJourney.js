@@ -332,7 +332,11 @@ const SubmitJourney = ({ authUser, authenticatedUser, allCommission, userCommiss
                                             <p>Processing Please Wait <i className="fa fa-circle-notch rotating-spinner"></i></p>
                                         </div>
                                         :
+                                        myState?.product?.url
+                                        ?
                                         <Submit />
+                                        :
+                                        ""
                                 }
                             </form>
                         </div>

@@ -21,19 +21,30 @@ li {
     position: fixed;
     top: 0;
     left: 0;
+    background: rgba(255, 255, 255, 0.956);
     height: 100%;
     width: 100%;
     z-index: 100;
     display: flex;
     justify-content: center;
     align-items: center;
-    background: rgba(255, 255, 255, 0.5);
-    backdrop-filter: blur(5px);
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    perspective: 1000px;
 
     img {
         height: auto;
-        width: 8rem;
+        width: 12rem;
+        transform-style: preserve-3d;
+        animation: loaderAnimation 2s ease-in-out infinite;
+    }
+}
+
+@keyframes loaderAnimation {
+    from {
+        transform: rotateY(0deg);
+    }
+
+    to {
+        transform: rotateY(360deg);
     }
 }
 
@@ -115,61 +126,6 @@ li {
     justify-content: center;
     align-items: center;
     flex-direction: column;
-}
-
-/* HTML: <div class="loader"></div> */
-.loader {
-    height: 10px;
-    width: 130px;
-    --c: no-repeat linear-gradient(#161616 0 0);
-    background: var(--c), var(--c), #c1c1c1;
-    background-size: 60% 100%;
-    animation: l16 3s infinite;
-    
-}
-
-.worldmap {
-    height: auto;
-    width: 60%;
-    margin-top: -6rem;
-    margin-bottom: -5rem;
-    filter: drop-shadow(2px 4px 6px black);
-}
-
-@keyframes l16 {
-    0% {
-        background-position: -150% 0, -150% 0
-    }
-
-    66% {
-        background-position: 250% 0, -150% 0
-    }
-
-    100% {
-        background-position: 250% 0, 250% 0
-    }
-}
-
-
-/* HTML: <div class="loader"></div> */
-.loader-alt {
-    width: fit-content;
-    font-weight: bold;
-    font-family: monospace;
-    font-size: 1.1rem;
-    clip-path: inset(0 3ch 0 0);
-    animation: l4 1s steps(4) infinite;
-    margin-top: 1rem;
-}
-
-.loader-alt:before {
-    content: "Loading..."
-}
-
-@keyframes l4 {
-    to {
-        clip-path: inset(0 -1ch 0 0)
-    }
 }
 
 .go2072408551 {
