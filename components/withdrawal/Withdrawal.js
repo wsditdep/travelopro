@@ -18,7 +18,7 @@ function Submit() {
     return (
         <>
             {
-                <button type="submit" disabled={pending} className="btn global-primary-btn">{pending ? <> Please wait... <i className="fa fa-circle-notch rotating-spinner"></i></> : "WITHDRAW"}</button>
+                <button type="submit" disabled={pending} className="btn global-primary-btn">{pending ? <><i className="fa fa-circle-notch rotating-spinner"></i></> : "WITHDRAW"}</button>
             }
         </>
     )

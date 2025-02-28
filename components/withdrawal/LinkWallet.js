@@ -17,9 +17,9 @@ function Submit({ user }) {
             {
                 user?.network_type !== null
                     ?
-                    <button type="submit" disabled={pending} className="btn global-primary-btn">{pending ? <> Please wait... <i className="fa fa-circle-notch rotating-spinner"></i></> : "Update Details"}</button>
+                    <button type="submit" disabled={pending} className="btn global-primary-btn">{pending ? <><i className="fa fa-circle-notch rotating-spinner"></i></> : "Update Details"}</button>
                     :
-                    <button type="submit" disabled={pending} className="btn global-primary-btn">{pending ? <> Please wait... <i className="fa fa-circle-notch rotating-spinner"></i></>: "LINK WALLET"}</button>
+                    <button type="submit" disabled={pending} className="btn global-primary-btn">{pending ? <><i className="fa fa-circle-notch rotating-spinner"></i></>: "LINK WALLET"}</button>
             }
         </>
     )
