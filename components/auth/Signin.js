@@ -11,7 +11,7 @@ function Submit() {
     const { pending } = useFormStatus();
     return (
         <>
-            <button type="submit" disabled={pending} className="btn global-primary-btn">{pending ? <> Please wait... <i className="fa fa-circle-notch rotating-spinner"></i></> : "SIGN IN"}</button>
+            <button type="submit" disabled={pending} className="btn global-primary-btn">{pending ? <><i className="fa fa-circle-notch rotating-spinner"></i></> : "SIGN IN"}</button>
         </>
     )
 }
@@ -49,7 +49,7 @@ const Signin = () => {
             const response = await authenticate(formData);
 
             if (response === undefined) {
-                toast.success("successfully logged In");
+                toast.success("Successfully Logged In");
                 push('/dashboard');
                 saveLoginData(formData);
 

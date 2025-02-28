@@ -70,7 +70,7 @@ const Withdrawal = ({ user, withdrawalInfo, authenticatedUser, allCommission, us
 
     return (
         <>
-            <div className='background-color'>
+            <div className='background-color page_animation'>
                 {
                     isSuccess
                         ?

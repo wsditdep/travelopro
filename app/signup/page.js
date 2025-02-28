@@ -1,11 +1,14 @@
-import SignUp from "@/components/auth/SignUp";
+import dynamic from "next/dynamic";
+import GlobalProgress from "@/components/global_progress/GlobalProgress";
 
-export const dynamic = "force-dynamic"
+const SignUp = dynamic(() => import("@/components/auth/SignUp"), {
+    loading: () => <GlobalProgress />
+});
 
 const page = () => {
     return (
         <>
-            <section className="auth-section">
+            <section className="auth-section page_animation">
                 <div className="auth-wrapper">
                     <SignUp />
                 </div>

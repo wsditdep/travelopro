@@ -20,7 +20,7 @@ function Submit() {
 
             <button type="submit" className={pending ? "btn global-primary-btn managedDisabled" : "btn global-primary-btn"}> {
                 pending ?
-                    <> Please wait... <i className="fa fa-circle-notch rotating-spinner"></i></>
+                    <><i className="fa fa-circle-notch rotating-spinner"></i></>
                     :
                     `SUBMIT`
             }
@@ -65,6 +65,9 @@ const SubmitJourney = ({ authUser, authenticatedUser, allCommission, userCommiss
                     setIsSuccess(true);
                     setIsPressed(true);
                     // toast.success(response.message);
+                    setTimeout(() => {
+                        push("/dashboard/journey");
+                    }, [2000]);
                 }
             } else {
                 toast.error(response.message);

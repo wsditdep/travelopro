@@ -71,7 +71,7 @@ const LinkWallet = ({ user, authenticatedUser, allCommission, userCommission }) 
 
     return (
         <>
-            <div className="colorfull-bg" style={{
+            <div className="colorfull-bg page_animation" style={{
                 backgroundImage: `url(${colorfull_bg.src})`,
             }}>
             </div>

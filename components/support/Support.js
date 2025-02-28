@@ -42,7 +42,7 @@ const Support = ({ setting, authUser, isLink, authenticatedUser, allCommission, 
                         userCommission={userCommission}
                     />
             }
-            <div className="linkwallet-section">
+            <div className="linkwallet-section page_animation">
                 <div className="card-vector-image-wrapper">
                     <div className="vector-image-note">
                         <h3>Need help?</h3>

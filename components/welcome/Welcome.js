@@ -5,7 +5,7 @@ import welcome_bg from "@/public/costar_assets/welcome-bg.jpg";
 
 const Welcome = () => {
     return (
-        <section className="welcome-page-section" style={{
+        <section className="welcome-page-section page_animation" style={{
             background: `linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.2)), url(${welcome_bg.src})`,
             backgroundSize: "cover",
             objectPosition: "center"

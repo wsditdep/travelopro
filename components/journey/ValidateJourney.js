@@ -15,7 +15,7 @@ function Submit() {
     return (
         <button type="submit" className={pending ? "btn global-white-btn managedDisabled" : "btn global-white-btn"}> {
             pending ?
-                <> Please wait... <i className="fa fa-circle-notch rotating-spinner"></i></>
+                <><i className="fa fa-circle-notch rotating-spinner"></i></>
                 :
                 `START`
         }

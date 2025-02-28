@@ -1,10 +1,14 @@
 import { fetchHistory } from '@/app/actions/history/data';
 import { fetchAuthenticatedUser, fetchCommission, fetchMembership } from '@/app/actions/user/data';
 import SecurityCheck from '@/components/checkSecurityCode/CheckSecurityCode';
-import History from '@/components/history/History';
 import { auth } from "@/app/auth";
 
-export const dynamic = "force-dynamic"
+import dynamic from "next/dynamic";
+import GlobalProgress from "@/components/global_progress/GlobalProgress";
+
+const History = dynamic(()=> import("@/components/history/History"), {
+    loading: ()=> <GlobalProgress />
+});
 
 const page = async () => {
 

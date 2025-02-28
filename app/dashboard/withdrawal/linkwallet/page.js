@@ -1,9 +1,13 @@
 import { fetchAuthenticatedUser, fetchCommission } from "@/app/actions/user/data";
 import { auth } from "@/app/auth";
 import SecurityCheck from "@/components/checkSecurityCode/CheckSecurityCode";
-import LinkWallet from "@/components/withdrawal/LinkWallet";
 
-export const dynamic = "force-dynamic"
+import dynamic from "next/dynamic";
+import GlobalProgress from "@/components/global_progress/GlobalProgress";
+
+const LinkWallet = dynamic(() => import("@/components/withdrawal/LinkWallet"), {
+    loading: () => <GlobalProgress />
+});
 
 const page = async () => {
 

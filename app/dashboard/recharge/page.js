@@ -1,9 +1,13 @@
 import { fetchAuthenticatedUser, fetchCommission } from "@/app/actions/user/data"
 import { auth } from "@/app/auth";
 import SecurityCheck from "@/components/checkSecurityCode/CheckSecurityCode";
-import Recharge from "@/components/recharge/Recharge"
 
-export const dynamic = "force-dynamic"
+import dynamic from "next/dynamic";
+import GlobalProgress from "@/components/global_progress/GlobalProgress";
+
+const Recharge = dynamic(() => import("@/components/recharge/Recharge"), {
+    loading: () => <GlobalProgress />
+});
 
 const page = async () => {
 

@@ -4,23 +4,33 @@ import { fetchAuthenticatedUser, fetchCommission } from "../actions/user/data";
 import Image from "next/image";
 import Link from "next/link";
 import SecurityCheck from "@/components/checkSecurityCode/CheckSecurityCode";
-import logo from "@/public/costar_assets/logos/logo.png"
-import dash_img from "@/public/costar_assets/images/dash_img.png"
-import UniqueProperties from "@/components/sliders/Uniqueproperties";
-import homeIcon from "@/public/costar_assets/icons/homeIcon.png"
-import dataOptimization from "@/public/costar_assets/icons/data_optIcon.png"
-import dealingRecord from "@/public/costar_assets/icons/dealingIcon.png"
-import profileIcon from "@/public/costar_assets/icons/profileIcon.png"
-import Properties from "@/components/sliders/Properties";
-import agentIcon from "@/public/costar_assets/icons/agentIcon.png"
-import lendersIcon from "@/public/costar_assets/icons/lendersIcon.png"
-import appraisersIcon from "@/public/costar_assets/icons/appraisersIcon.png"
-import investmentIcon from "@/public/costar_assets/icons/investmentIcon.png"
-import occupiersIcon from "@/public/costar_assets/icons/occupiersIcon.png"
-import Membership from "@/components/sliders/Membership";
-import user_profile from "@/public/costar_assets/images/user_profile.jpg"
+import logo from "@/public/costar_assets/logos/logo.png";
+import dash_img from "@/public/costar_assets/images/dash_img.png";
+import homeIcon from "@/public/costar_assets/icons/homeIcon.png";
+import dataOptimization from "@/public/costar_assets/icons/data_optIcon.png";
+import dealingRecord from "@/public/costar_assets/icons/dealingIcon.png";
+import profileIcon from "@/public/costar_assets/icons/profileIcon.png";
+import agentIcon from "@/public/costar_assets/icons/agentIcon.png";
+import lendersIcon from "@/public/costar_assets/icons/lendersIcon.png";
+import appraisersIcon from "@/public/costar_assets/icons/appraisersIcon.png";
+import investmentIcon from "@/public/costar_assets/icons/investmentIcon.png";
+import occupiersIcon from "@/public/costar_assets/icons/occupiersIcon.png";
+import user_profile from "@/public/costar_assets/images/user_profile.jpg";
 
-export const dynamic = "force-dynamic"
+import dynamic from "next/dynamic";
+import GlobalProgress from "@/components/global_progress/GlobalProgress";
+
+const Properties = dynamic(() => import("@/components/sliders/Properties"), {
+    loading: () => <GlobalProgress />
+});
+
+const UniqueProperties = dynamic(() => import("@/components/sliders/Uniqueproperties"), {
+    loading: () => <GlobalProgress />
+});
+
+const Membership = dynamic(() => import("@/components/sliders/Membership"), {
+    loading: () => <GlobalProgress />
+});
 
 const page = async () => {
 
@@ -31,7 +41,7 @@ const page = async () => {
 
     return (
         <>
-            <div className='background-color'>
+            <div className='background-color page_animation'>
                 <div className="dashboard-wrapper">
                     <div className="dashboard-wrapper-inner-wrapper">
                         <div className="dashboard-top-navbar">

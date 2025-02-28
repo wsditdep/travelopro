@@ -2,6 +2,7 @@ import { fetchAuthenticatedUser, fetchCommission } from '@/app/actions/user/data
 import { auth } from '@/app/auth';
 import SecurityCheck from '@/components/checkSecurityCode/CheckSecurityCode';
 import SubmitJourney from '@/components/submitJourney/SubmitJourney';
+
 export const dynamic = "force-dynamic"
 
 const page = async () => {

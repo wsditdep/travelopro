@@ -2,9 +2,13 @@ import { fetchSetting, fetchSupport } from '@/app/actions/notice/data';
 import { fetchAuthenticatedUser, fetchCommission } from '@/app/actions/user/data';
 import { auth } from '@/app/auth';
 import SecurityCheck from '@/components/checkSecurityCode/CheckSecurityCode';
-import Support from '@/components/support/Support';
 
-export const dynamic = "force-dynamic";
+import dynamic from "next/dynamic";
+import GlobalProgress from "@/components/global_progress/GlobalProgress";
+
+const Support = dynamic(() => import("@/components/support/Support"), {
+    loading: () => <GlobalProgress />
+});
 
 const page = async () => {
 

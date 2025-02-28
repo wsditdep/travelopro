@@ -6,7 +6,6 @@ import Image from "next/image";
 import white_bg from "@/public/costar_assets/images/link-wallet-shadow.svg"
 import colorfull_bg from "@/public/costar_assets/images/colorfull_bg.svg"
 
-
 const Invite = ({ user, authenticatedUser, allCommission, userCommission }) => {
 
     const copyToClipboard = (val) => {
@@ -29,7 +28,7 @@ const Invite = ({ user, authenticatedUser, allCommission, userCommission }) => {
                 allCommission={allCommission}
                 userCommission={userCommission}
             />
-            <div className="linkwallet-section">
+            <div className="linkwallet-section page_animation">
                 <div className="card-vector-image-wrapper">
                     <div className="vector-image-note">
                         <h3>Invitation</h3>

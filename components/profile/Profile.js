@@ -11,7 +11,7 @@ import Loader from '../loader/Loader';
 import profileCard from "@/public/costar_assets/images/profile_card.svg"
 import user_profile from "@/public/costar_assets/images/user_profile.jpg"
 
-export const Profile = ({ user, authenticatedUser, userCommission, allCommission }) => {
+const Profile = ({ user, authenticatedUser, userCommission, allCommission }) => {
 
     const router = useRouter();
 
@@ -80,7 +80,7 @@ export const Profile = ({ user, authenticatedUser, userCommission, allCommission
 
     return (
         <>
-            <div className='background-color'>
+            <div className='background-color page_animation'>
                 <Breadcrumb
                     title="PROFILE"
                     link="/dashboard"
@@ -198,3 +198,5 @@ export const Profile = ({ user, authenticatedUser, userCommission, allCommission
         </>
     )
 }
+
+export default Profile;

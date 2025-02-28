@@ -1,6 +1,6 @@
 import Image from 'next/image'
 import React from 'react';
-import costar_loading from "@/public/costar_loading.gif";
+import costar_loading from "@/public/costar_assets/logos/logo.png";
 
 const Loader = () => {
   return (

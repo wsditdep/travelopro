@@ -4,8 +4,9 @@ import "./styles/appLayout.scss";
 import "./styles/styles.scss";
 import "./styles/global.scss";
 import { Toaster } from "react-hot-toast";
-import LiveSupport from '@/components/liveSupport/LiveSupport';
+// import LiveSupport from '@/components/liveSupport/LiveSupport';
 import favicon from "@/public/favicon.jpg";
+import NextTopLoader from 'nextjs-toploader';
 
 export const metadata = {
   title: "Welcome - Travelopro",
@@ -32,11 +33,12 @@ export default function RootLayout({ children }) {
             },
           }}
         />
-          <div className="platform-layout-parent">
-            <div className="platform-layout-childs">
-              {children}
-            </div>
+        <div className="platform-layout-parent">
+          <div className="platform-layout-childs">
+            <NextTopLoader />
+            {children}
           </div>
+        </div>
         {/* <LiveSupport /> */}
       </body>
     </html>

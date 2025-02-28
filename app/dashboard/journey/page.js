@@ -10,7 +10,6 @@ import card_vect from "@/public/costar_assets/images/card_vect.png"
 import Image1 from "@/public/costar_assets/slider2_images/img1.png";
 import Image2 from "@/public/costar_assets/slider2_images/img2.jpg";
 import Image3 from "@/public/costar_assets/slider2_images/img3.jpg";
-import Image4 from "@/public/costar_assets/slider2_images/img4.jpg";
 
 export const dynamic = "force-dynamic";
 

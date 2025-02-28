@@ -2,9 +2,13 @@ import { fetchRechargeHistory } from "@/app/actions/history/data";
 import { fetchAuthenticatedUser, fetchCommission } from "@/app/actions/user/data";
 import { auth } from "@/app/auth";
 import SecurityCheck from "@/components/checkSecurityCode/CheckSecurityCode";
-import RechargeHistory from "@/components/rechargeHistory/RechargeHistory";
 
-export const dynamic = "force-dynamic"
+import dynamic from "next/dynamic";
+import GlobalProgress from "@/components/global_progress/GlobalProgress";
+
+const RechargeHistory = dynamic(() => import("@/components/rechargeHistory/RechargeHistory"), {
+    loading: () => <GlobalProgress />
+});
 
 const page = async () => {
 

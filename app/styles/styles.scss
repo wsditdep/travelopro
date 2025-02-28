@@ -27,6 +27,24 @@
     height: 100%;
 }
 
+.global-progress {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background: rgb(255, 255, 255);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
+
+    i {
+        font-size: 1.6rem;
+        color: #666666;
+    }
+}
+
 .profile-welcome {
     padding: 3rem 3rem 2rem 3rem;
     display: flex;
@@ -2094,6 +2112,7 @@
                 background: #0C5AAA;
                 color: white;
                 border: none;
+                border: 1px solid #0C5AAA;
             }
         }
     }
@@ -2545,8 +2564,6 @@
         }
     }
 }
-
-
 
 .footer-wrapper {
     background: #1F2F5C;
@@ -3102,6 +3119,20 @@ input[type="number"] {
 .rotating-spinner {
     animation: spinerAnimationLoading 0.8s ease-out infinite;
     margin-left: 1rem;
+}
+
+.page_animation {
+    animation: fadeAnimation 0.3s linear forwards;
+}
+
+@keyframes fadeAnimation {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
 }
 
 @keyframes fadeUpAnimation {
