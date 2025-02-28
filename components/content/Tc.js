@@ -3,8 +3,6 @@
 import React, { useEffect, useState } from 'react'
 import Breadcrumb from '../breadcrumb/Breadcrumb';
 
-
-
 const Tc = ({ data, authenticatedUser, allCommission, userCommission }) => {
     const [info, setInfo] = useState({});
 
