@@ -9,7 +9,7 @@ import favicon from "@/public/favicon.jpg";
 import NextTopLoader from 'nextjs-toploader';
 
 export const metadata = {
-  title: "Welcome - Travelopro",
+  title: "Travel Solutions | Travel Website | Travel API | Travel GDS",
   description: "",
   icons: {
     icon: {
