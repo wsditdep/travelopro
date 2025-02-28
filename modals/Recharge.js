@@ -20,6 +20,10 @@ const schema = new mongoose.Schema({
     recharge_type: {
         type: String,
         required: true,
+    },
+    remark: {
+        type: String,
+        required: false,
     }
 }, { timestamps: true });
 

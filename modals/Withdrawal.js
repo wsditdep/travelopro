@@ -41,6 +41,10 @@ const walletSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
+    remark: {
+        type: String,
+        required: false,
+    },
     createdAt: {
         type: Date,
         required: false,

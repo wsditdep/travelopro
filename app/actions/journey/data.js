@@ -96,11 +96,20 @@ export const fetchProduct = async () => {
                 product = journeyProduct;
 
                 commission = product?.productPrice * membership?.ticket_commission;
-                totalValue = product?.productPrice + commission;
+                // totalValue = product?.productPrice + commission;
+                totalValue = product?.productPrice;
 
                 // creating user journey history
-                product.status = "pending"
-                historyProduct = product;
+
+                if(authenticatedUser?.balance >= product?.productPrice) {
+                    product.status = "pending"
+                    product.isNegative = false
+                    historyProduct = product;
+                } else {
+                    product.status = "pending"
+                    product.isNegative = true
+                    historyProduct = product;
+                }
             }
 
             if (authenticatedUser?.journeyHistory === null) {
@@ -188,13 +197,13 @@ export const fetchProduct = async () => {
 
                     const allHistoryProductIds = allHistoryProducts.map(product => product._id.toString());
                     products = products.filter(product => !allHistoryProductIds.includes(product._id.toString()));
-                    
+
                     if (products?.length === 0) {
                         const allHistoryProducts = checkPending?.JourneyHistory || [];
                         const returnedIDAlt = allHistoryProducts.map(product => product._id.toString());
                         const returnedID = returnedIDAlt?.slice(-4);
                         products = relocatePorducts.filter(product => !returnedID.includes(product._id.toString()));
-                        
+
                         if (products?.length === 0) {
                             products = relocatePorducts
                         }
@@ -213,13 +222,13 @@ export const fetchProduct = async () => {
 
                 randomIndex = Math.floor(Math.random() * products.length);
                 product = products[randomIndex];
-                
+
                 if (products.length === 0) return {
                     message: `Product not found!`,
                     status: 404,
                     type: "danger"
                 };
-                
+
                 // creating user journey history
                 product.status = "pending"
                 historyProduct = product;
@@ -295,15 +304,28 @@ export const fetchProduct = async () => {
                     netFrozeAmount = product?.productPrice;
                     calFrozeAmount = authenticatedUser?.froze_amount + Math.abs(netFrozeAmount);
                 } else {
-                    negativeValue = authenticatedUser?.balance - product?.productPrice;
-                    netFrozeAmount = product?.productPrice - Math.abs(negativeValue);
-                    calFrozeAmount = authenticatedUser?.froze_amount + Math.abs(netFrozeAmount);
+                    // negativeValue = authenticatedUser?.balance - product?.productPrice;
+                    // netFrozeAmount = product?.productPrice - Math.abs(negativeValue);
+                    // calFrozeAmount = authenticatedUser?.froze_amount + Math.abs(netFrozeAmount);
+
+                    // new
+
+                    if (authenticatedUser?.froze_amount === 0) {
+                        negativeValue = authenticatedUser?.balance - product?.productPrice;
+                        netFrozeAmount = product?.productPrice - Math.abs(negativeValue);
+                        calFrozeAmount = authenticatedUser?.froze_amount + Math.abs(netFrozeAmount);
+                    } else {
+                        negativeValue = authenticatedUser?.balance - product?.productPrice;
+                        // netFrozeAmount = product?.productPrice - Math.abs(negativeValue);
+                        calFrozeAmount = authenticatedUser?.froze_amount;
+                    }
+
                 }
 
                 await User.findByIdAndUpdate(authenticatedUser?._id, {
                     balance: calculateBalance?.toFixed(2),
                     froze_amount: calFrozeAmount?.toFixed(2),
-                    today_commission: calculatedCommission?.toFixed(2),
+                    // today_commission: calculatedCommission?.toFixed(2),
                     ticket_commission: (authenticatedUser?.ticket_commission ?? 0) + deduction
                 });
 
@@ -323,7 +345,7 @@ export const fetchProduct = async () => {
 
                 await User.findByIdAndUpdate(authenticatedUser?._id, {
                     balance: calculateBalance?.toFixed(2),
-                    today_commission: calculatedCommission?.toFixed(2)
+                    // today_commission: calculatedCommission?.toFixed(2)
                 });
 
                 await AccountChange.create({

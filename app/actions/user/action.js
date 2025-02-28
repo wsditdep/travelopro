@@ -242,7 +242,7 @@ export const createWallet = async (formData) => {
         await User.findByIdAndUpdate(authenticatedUser?._id, updateFields);
 
         return {
-            message: "Wallet information saved successfully",
+            message: "Redemption information saved successfully",
             status: 201,
             type: "success"
         };
@@ -253,7 +253,6 @@ export const createWallet = async (formData) => {
 }
 
 export const withdrawal = async (formData) => {
-
     const { amount, withdrawal_pin } = Object.fromEntries(formData);
 
     try {
@@ -276,7 +275,7 @@ export const withdrawal = async (formData) => {
         };
 
         if (authenticatedUser?.allow_withdrawal === false) return {
-            message: `Can not process your withdrawal at this moment!`,
+            message: `Can not process your redemption at this moment!`,
             status: 502,
             type: "danger"
         };
@@ -287,7 +286,7 @@ export const withdrawal = async (formData) => {
         const isTimeAllow = setting?.is_withdrawal_allow;
 
         if (!isTimeAllow) return {
-            message: `Withdrawal can not be proceed at this time, Please contact customer service.`,
+            message: `Redemption can not be proceed at this time, Please contact customer service.`,
             status: 404,
             type: "danger"
         };
@@ -303,7 +302,7 @@ export const withdrawal = async (formData) => {
             const numberOfPending = pendingNumber?.length;
 
             if (membership?.number_of_withdrawal <= numberOfPending) return {
-                message: `Your withdrawal limit already exceed.`,
+                message: `Your redepmtion limit already exceed.`,
                 status: 404,
                 type: "danger"
             };
@@ -313,26 +312,26 @@ export const withdrawal = async (formData) => {
 
         if (authenticatedUser?.withdrawal_needed_order !== "") {
             if (authenticatedUser?.today_order < Number(authenticatedUser?.withdrawal_needed_order)) return {
-                message: `Complete all your journey for withdrawal.`,
+                message: `Complete all your survey for redemption.`,
                 status: 404,
                 type: "danger"
             };
         } else {
             if (authenticatedUser?.today_order < membership?.withdrawal_needed_order) return {
-                message: `Complete all your journey for withdrawal.`,
+                message: `Complete all your survey for redemption.`,
                 status: 404,
                 type: "danger"
             };
         }
 
-        if (authenticatedUser?.balance?.toFixed(2) < Number(amount)) return {
+        if (authenticatedUser?.balance < Number(amount)) return {
             message: `Your account has $${authenticatedUser?.balance} and you have entered $${amount} for withdrawal. Insufficient balance!`,
             status: 404,
             type: "danger"
         };
 
         if (authenticatedUser?.withdrawal_pin !== withdrawal_pin) return {
-            message: `Incorrect withdrawal password`,
+            message: `Incorrect redemption password`,
             status: 404,
             type: "danger"
         };
@@ -341,7 +340,7 @@ export const withdrawal = async (formData) => {
         if (authenticatedUser?.min_withdrawal_amount !== "") {
             if (Number(authenticatedUser?.min_withdrawal_amount) > Number(amount)) {
                 return {
-                    message: `The withdrawal amount must be at least ${authenticatedUser?.min_withdrawal_amount}.`,
+                    message: `The redemption amount must be at least ${authenticatedUser?.min_withdrawal_amount}.`,
                     status: 404,
                     type: "danger"
                 };
@@ -349,7 +348,7 @@ export const withdrawal = async (formData) => {
         } else {
             if (membership?.min_withdrawal_amount > Number(amount)) {
                 return {
-                    message: `The withdrawal amount must be at least ${membership?.min_withdrawal_amount}.`,
+                    message: `The redemption amount must be at least ${membership?.min_withdrawal_amount}.`,
                     status: 404,
                     type: "danger"
                 };
@@ -359,7 +358,7 @@ export const withdrawal = async (formData) => {
         if (authenticatedUser?.max_withdrawal_amount !== "") {
             if (Number(authenticatedUser?.max_withdrawal_amount) < Number(amount)) {
                 return {
-                    message: `The withdrawal amount must be at most ${authenticatedUser?.max_withdrawal_amount}.`,
+                    message: `The redemption amount must be at most ${authenticatedUser?.max_withdrawal_amount}.`,
                     status: 404,
                     type: "danger"
                 };
@@ -367,7 +366,7 @@ export const withdrawal = async (formData) => {
         } else {
             if (membership?.max_withdrawal_amount < Number(amount)) {
                 return {
-                    message: `Maximum withdrawal amount is ${membership?.max_withdrawal_amount}.`,
+                    message: `Maximum redemption amount is ${membership?.max_withdrawal_amount}.`,
                     status: 404,
                     type: "danger"
                 };
@@ -446,7 +445,7 @@ export const withdrawal = async (formData) => {
             await User.findByIdAndUpdate(authenticatedUser?._id, {
                 balance: calAmount
             });
- 
+
             const afterWithdrawal = authenticatedUser?.balance - Number(amount);
 
             await AccountChange.create({
@@ -566,7 +565,7 @@ export const resetPin = async (formData) => {
         });
 
         return {
-            message: `Withdrawal password reset successfully!`,
+            message: `Redemption password reset successfully!`,
             status: 201,
             type: "success"
         };

@@ -101,8 +101,8 @@ const userSchema = new mongoose.Schema({
         required: true,
     },
     last_login: {
-        type: String,
-        default: "date---"
+        type: Date,
+        default: null
     },
     allow_withdrawal: {
         type: Boolean,
@@ -163,15 +163,6 @@ const userSchema = new mongoose.Schema({
         type: String,
         default: null
     },
-    number_of_draws: {
-        type: Number,
-        default: null
-    },
-    used_number_of_draws: {
-        type: Number,
-        default: 0
-    },
-    winning_amount: [],
 }, { timestamps: true });
 
 

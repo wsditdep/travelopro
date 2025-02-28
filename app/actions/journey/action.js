@@ -41,7 +41,7 @@ export const submitJourney = async () => {
         };
 
         if (authenticatedUser?.balance < 0) return {
-            message: `Insufficient balance to place this order!`,
+            message: `Account balance is insufficient to evaluate this product`,
             status: 502,
             type: "danger"
         };
@@ -110,7 +110,7 @@ export const submitJourney = async () => {
         const calculateStage = authenticatedUser?.today_order + 1;
 
         const calculateFinalBalance = calculatedRefundAmount + calculateCommission;
-        // const calculateFinalCommission = authenticatedUser?.today_commission + calculateCommission;
+        const calculateFinalCommission = authenticatedUser?.today_commission + calculateCommission;
 
         // let deductedAmount = Number(collectAllHistory[0].productPrice) * Number(commissionRate) || 0;
         // let calReturnAmount = authenticatedUser?.balance + authenticatedUser?.froze_amount + authenticatedUser?.today_commission;
@@ -120,6 +120,7 @@ export const submitJourney = async () => {
         let calFrozeAmount;
         let ticketCommission;
         var isNextJourney;
+        let allCom;
 
         if (isPendingProductObject?.isJourneyProduct) {
 
@@ -127,14 +128,20 @@ export const submitJourney = async () => {
             const isNext = journeyStageArray[0] - currentJourneyProduct.stage;
 
             if (isNext !== 1) {
-                // calBalance = authenticatedUser?.balance + authenticatedUser?.froze_amount + authenticatedUser?.ticket_commission;
-                calBalance = authenticatedUser?.froze_amount + authenticatedUser?.ticket_commission;
+
+                if (isPendingProductObject?.isNegative) {
+                    calBalance = authenticatedUser?.froze_amount + authenticatedUser?.ticket_commission;
+                } else {
+                    calBalance = authenticatedUser?.balance + authenticatedUser?.froze_amount + authenticatedUser?.ticket_commission;
+                }
+
                 calFrozeAmount = 0;
                 ticketCommission = 0;
                 isNextJourney = false;
+                allCom = authenticatedUser?.ticket_commission + authenticatedUser?.today_commission;
 
-                // const balanceAfterOp = authenticatedUser?.balance + authenticatedUser?.froze_amount;
                 const balanceAfterOp = authenticatedUser?.froze_amount;
+
                 await AccountChange.create({
                     username: authenticatedUser?.username,
                     phone_number: authenticatedUser?.phone_number,
@@ -154,12 +161,14 @@ export const submitJourney = async () => {
             } else {
                 calBalance = authenticatedUser?.balance;
                 calFrozeAmount = authenticatedUser?.froze_amount;
-                ticketCommission = authenticatedUser?.ticket_commission
+                ticketCommission = authenticatedUser?.ticket_commission;
                 isNextJourney = true;
+                allCom = authenticatedUser?.today_commission;
             }
 
             await User.findByIdAndUpdate(authenticatedUser?._id, {
-                balance: calBalance,
+                balance: calBalance?.toFixed(2),
+                today_commission: allCom,
                 today_order: calculateStage,
                 froze_amount: calFrozeAmount,
                 ticket_commission: ticketCommission,
@@ -211,9 +220,9 @@ export const submitJourney = async () => {
 
         } else {
             await User.findByIdAndUpdate(authenticatedUser?._id, {
-                balance: calculateFinalBalance,
+                balance: calculateFinalBalance?.toFixed(2),
                 today_order: calculateStage,
-                // today_commission: calculateFinalCommission,
+                today_commission: calculateFinalCommission,
             });
 
             await AccountChange.create({
