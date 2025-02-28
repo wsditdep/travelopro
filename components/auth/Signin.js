@@ -55,7 +55,11 @@ const Signin = () => {
 
                 return;
             } else {
-                toast.error(response.message);
+                if (response.message === "User has been banned") {
+                    toast.error(response.message);
+                } else {
+                    toast.error(response.message);
+                }
             }
 
         } catch (error) {

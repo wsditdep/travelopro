@@ -19,7 +19,26 @@ export const authenticate = async (formData) => {
     const { username, password } = Object.fromEntries(formData);
     try {
 
-        connectToDB();
+        await connectToDB();
+        // check account is blocked or suspended
+        const user = await User.findOne({
+            $or: [
+                { username: username },
+                { phone_number: username }
+            ]
+        });
+
+        if (!user) return {
+            message: `User not found. Please register before login!`,
+            status: 404,
+            type: "danger"
+        };
+
+        if (!user?.status) return {
+            message: `User has been banned`,
+            status: 501,
+            type: "danger"
+        };
 
         await signIn("credentials", { username, password });
 
