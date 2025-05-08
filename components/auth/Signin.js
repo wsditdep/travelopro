@@ -55,7 +55,7 @@ const Signin = () => {
 
                 return;
             } else {
-                if (response.message === "User has been banned") {
+                if (response.message === "Agent has been freeze") {
                     toast.error(response.message);
                 } else {
                     toast.error(response.message);

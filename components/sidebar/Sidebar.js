@@ -15,6 +15,7 @@ import tcIcon from "@/public/costar_assets/icons/tcIcon.png"
 import securityIcon from "@/public/costar_assets/icons/securityIcon.png"
 import supportIcon from "@/public/costar_assets/icons/supportIcon.png"
 import user_profile from "@/public/costar_assets/images/user_profile.jpg"
+import appraisersIcon from "@/public/costar_assets/icons/appraisersIcon.png"
 
 import vip1 from "@/public/costar_assets/icons/beginnerIcon.png"
 import vip2 from "@/public/costar_assets/icons/silverIcon.png"
@@ -170,7 +171,7 @@ const Sidebar = ({ session, isWhite, authenticatedUser, userCommission, allCommi
                                                         height={100}
                                                         width={100}
                                                     />
-                                                    <h3>Deposit</h3>
+                                                    <h3>Recharge</h3>
                                                 </div>
 
                                                 <svg
@@ -293,6 +294,29 @@ const Sidebar = ({ session, isWhite, authenticatedUser, userCommission, allCommi
                                                     <h3>Invitation</h3>
                                                 </div>
 
+                                                <svg
+                                                    xmlns="http://www.w3.org/2000/svg"
+                                                    fill="none"
+                                                    viewBox="0 0 7 7"
+                                                >
+                                                    <path
+                                                        fill="#0C5AAA"
+                                                        d="M4.578 3.5.769 5.97a.56.56 0 0 0-.265.395.5.5 0 0 0 .171.425c.128.119.31.193.508.208a.9.9 0 0 0 .547-.132l4.5-2.917a.6.6 0 0 0 .2-.201.5.5 0 0 0 .07-.248.5.5 0 0 0-.07-.247.6.6 0 0 0-.2-.2L1.73.134a.9.9 0 0 0-.548-.133.83.83 0 0 0-.508.208.5.5 0 0 0-.171.426.56.56 0 0 0 .266.396z"
+                                                    ></path>
+                                                </svg>
+                                            </li>
+                                        </Link>
+                                        <Link href="/dashboard/membership">
+                                            <li>
+                                                <div className='iconAndTitle'>
+                                                    <Image
+                                                        src={appraisersIcon}
+                                                        alt='icon'
+                                                        height={100}
+                                                        width={100}
+                                                    />
+                                                    <h3>Membership Upgrade</h3>
+                                                </div>
                                                 <svg
                                                     xmlns="http://www.w3.org/2000/svg"
                                                     fill="none"

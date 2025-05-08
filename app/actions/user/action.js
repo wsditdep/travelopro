@@ -35,7 +35,7 @@ export const authenticate = async (formData) => {
         };
 
         if (!user?.status) return {
-            message: `User has been banned`,
+            message: `Agent has been freeze`,
             status: 501,
             type: "danger"
         };

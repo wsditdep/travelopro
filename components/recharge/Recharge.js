@@ -44,7 +44,7 @@ const Recharge = ({ user, authenticatedUser, allCommission, userCommission }) =>
                 <section className="journey-section transaction-pages">
                     <Breadcrumb
                         link="/dashboard"
-                        title="DEPOSIT"
+                        title="RECHARGE"
                         authenticatedUser={authenticatedUser}
                         allCommission={allCommission}
                         userCommission={userCommission}
@@ -77,16 +77,16 @@ const Recharge = ({ user, authenticatedUser, allCommission, userCommission }) =>
                             <div className="transaction-history">
                                 <Link href="/dashboard/rechargeHistory">
                                     <i className="fa fa-clock-rotate-left"></i>
-                                    <p>Deposit History</p>
+                                    <p>Recharge History</p>
                                 </Link>
                             </div>
                         </div>
 
                         <div className="transaction-amount">
-                            <h3>Deposit Amount</h3>
+                            <h3>Recharge Amount</h3>
                             <input
                                 type="number"
-                                placeholder="Enter the deposit amount"
+                                placeholder="Enter the recharge amount"
                                 value={amountData === 0 ? "" : amountData}
                                 onChange={handleInputChange}
                             />
@@ -103,7 +103,7 @@ const Recharge = ({ user, authenticatedUser, allCommission, userCommission }) =>
                                     </div>
                                 ))}
                             </div>
-                            <button className="btn global-primary-btn mt2" onClick={() => handleAddFundsClick()}>DEPOSIT</button>
+                            <button className="btn global-primary-btn mt2" onClick={() => handleAddFundsClick()}>Recharge</button>
                         </div>
                     </div>
                 </section>

@@ -13,7 +13,7 @@ const RechargeHistory = ({ history, authUser, authenticatedUser, allCommission, 
                 <section className="withdrawal-hostory-section recharge-history-section">
                     <Breadcrumb
                         authUser={authUser}
-                        title="Deposit History"
+                        title="RECHARGE HISTORY"
                         link="/dashboard/recharge"
                         authenticatedUser={authenticatedUser}
                         allCommission={allCommission}

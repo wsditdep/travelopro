@@ -95,7 +95,7 @@ const page = async () => {
                         </div>
                         <Link href="/dashboard/journey">
                             <div className="lucky-spin-wrapper">
-                                <button className="btn global-primary-btn">START JOURNEY</button>
+                                <button className="btn global-primary-btn">Begin my resources</button>
                             </div>
                         </Link>
                     </div>
@@ -138,7 +138,7 @@ const page = async () => {
                                         unoptimized
                                     />
                                 </div>
-                                <p>Start Journey</p>
+                                <p>Begin my resources</p>
                             </Link>
                             <Link href="/dashboard/history">
                                 <div className="dashboard-quick-actions-inner-childs">
