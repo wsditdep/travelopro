@@ -48,13 +48,13 @@ const RechargeHistory = ({ history, authUser, authenticatedUser, allCommission, 
                                                         <>
                                                             <p>Recharged Amount: ${data?.amount}</p>
                                                             <h3>${data?.amount} has been crediteds to your account</h3>
-                                                            <h6>{moment.tz(data?.createdAt, process.env.NEXT_PUBLIC_TIMWZONE).format('MM.D.YYYY, HH:mm:ss')}</h6>
+                                                            <h6>{moment.tz(data?.createdAt, process.env.NEXT_PUBLIC_TIMWZONE).format('DD/MM/YYYY, HH:mm:ss')}</h6>
                                                         </>
                                                         :
                                                         <>
                                                             <p>Debited Amount: ${data?.amount}</p>
                                                             <h3>${data?.amount} has been debited from your account</h3>
-                                                            <h6>{moment.tz(data?.createdAt, process.env.NEXT_PUBLIC_TIMWZONE).format('MM.D.YYYY, HH:mm:ss')}</h6>
+                                                            <h6>{moment.tz(data?.createdAt, process.env.NEXT_PUBLIC_TIMWZONE).format('DD/MM/YYYY, HH:mm:ss')}</h6>
                                                         </>
                                                 }
                                             </div>

@@ -77,7 +77,7 @@ const History = ({ data, membership, authUser, authenticatedUser, allCommission,
                                             <div className="dealing-record-status-parent">
                                                 <div className="dealing-record-status-child">
                                                     <h3>{data?.productName}</h3>
-                                                    <p>{moment.tz(data?.createdAt, process.env.NEXT_PUBLIC_TIMWZONE).format('MM.D.YYYY, HH:mm:ss')}</p>
+                                                    <p>{moment.tz(data?.createdAt, process.env.NEXT_PUBLIC_TIMWZONE).format('DD/MM/YYYY, HH:mm:ss')}</p>
                                                 </div>
                                                 <div className="dealing-record-status-child">
                                                     {

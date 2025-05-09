@@ -3381,6 +3381,10 @@ input[type="number"] {
         font-size: calc(100% - ((767px - 100vw) * 0.01));
     }
 
+    .journey-history-card-wrapper .dealing-record-card-wrapper .dealing-record-status-wrapper .dealing-record-card-parent {
+        align-items: normal;
+    }
+
     .dash-image-wrapper {
         height: 27rem;
     }

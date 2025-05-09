@@ -80,19 +80,19 @@ const WithdrawalHistory = ({ withdrawal, authUser, authenticatedUser, allCommiss
                                                             ?
                                                             <>
                                                                 <button className='pending'>PENDING</button>
-                                                                <p>{moment.tz(data?.createdAt, process.env.NEXT_PUBLIC_TIMWZONE).format('D.MM.YYYY, HH:mm:ss ')}</p>
+                                                                <p>{moment.tz(data?.createdAt, process.env.NEXT_PUBLIC_TIMWZONE).format('DD/MM/YYYY, HH:mm:ss')}</p>
                                                             </>
                                                             :
                                                             data?.status === "approved"
                                                                 ?
                                                                 <>
                                                                     <button className='complete'>COMPLETED</button>
-                                                                    <p>{moment.tz(data?.createdAt, process.env.NEXT_PUBLIC_TIMWZONE).format('D.MM.YYYY, HH:mm:ss ')}</p>
+                                                                    <p>{moment.tz(data?.createdAt, process.env.NEXT_PUBLIC_TIMWZONE).format('DD/MM/YYYY, HH:mm:ss')}</p>
                                                                 </>
                                                                 :
                                                                 <>
                                                                     <button className='freeze'>FREEZED</button>
-                                                                    <p>{moment.tz(data?.createdAt, process.env.NEXT_PUBLIC_TIMWZONE).format('D.MM.YYYY, HH:mm:ss ')}</p>
+                                                                    <p>{moment.tz(data?.createdAt, process.env.NEXT_PUBLIC_TIMWZONE).format('DD/MM/YYYY, HH:mm:ss')}</p>
                                                                 </>
                                                     }
                                                 </div>
