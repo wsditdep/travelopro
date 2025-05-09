@@ -170,11 +170,15 @@ const page = async () => {
                     <UniqueProperties />
                     <div className="commercial-data-wrapper">
                         <div className="commercial-data-heading">
-                            <h2>Commercial traval data
-                                for a wide range of applications</h2>
-                            <p>Whether you’re buying, selling, or leasing a property, <br />
+                            <h2>
+                                Commercial traval data
+                                for a wide range of applications
+                            </h2>
+                            <p>
+                                Whether you’re buying, selling, or leasing a property, <br />
                                 representing tenants, valuing assets, originating loans <br />
-                                or managing diverse portfolios, Travelopro has got you covered.</p>
+                                or managing diverse portfolios, Travelopro has got you covered.
+                            </p>
                         </div>
                         <div className="commercial-facilities-wrapper">
                             <div className="facilities-parent">

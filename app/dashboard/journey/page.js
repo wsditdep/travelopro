@@ -26,7 +26,7 @@ const page = async () => {
         <section className="journey-section">
           <Breadcrumb
             link="/dashboard"
-            title="Journey"
+            title="Resources"
             authUser={JSON.parse(JSON.stringify(user))}
             authenticatedUser={JSON.parse(JSON.stringify(user))}
             allCommission={JSON.parse(JSON.stringify(allCommission))}
@@ -62,11 +62,11 @@ const page = async () => {
                   <div className="journey-start-details-parent">
                     <div className="journey-start-details-childs">
                       <h4>{user?.daily_available_order ?? ""}</h4>
-                      <p>Total Journey</p>
+                      <p>Total Resources</p>
                     </div>
                     <div className="journey-start-details-childs">
                       <h4>{user?.today_order ?? ""}</h4>
-                      <p>Visited Journey</p>
+                      <p>Visited Resources</p>
                     </div>
                     <div className="journey-start-details-childs">
                       <h4>$ {user?.today_commission?.toFixed(2) ?? ""}</h4>

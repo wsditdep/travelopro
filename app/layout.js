@@ -4,9 +4,9 @@ import "./styles/appLayout.scss";
 import "./styles/styles.scss";
 import "./styles/global.scss";
 import { Toaster } from "react-hot-toast";
-// import LiveSupport from '@/components/liveSupport/LiveSupport';
 import favicon from "@/public/favicon.jpg";
 import NextTopLoader from 'nextjs-toploader';
+import LiveSupport from '@/components/liveSupport/LiveSupport';
 
 export const metadata = {
   title: "Travel Solutions | Travel Website | Travel API | Travel GDS",
@@ -39,7 +39,7 @@ export default function RootLayout({ children }) {
             {children}
           </div>
         </div>
-        {/* <LiveSupport /> */}
+        <LiveSupport />
       </body>
     </html>
   );
