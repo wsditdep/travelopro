@@ -28,14 +28,14 @@ const Support = ({ setting, authUser, isLink, authenticatedUser, allCommission, 
                     ?
                     <Breadcrumb
                         authUser={authUser}
-                        title="Support"
+                        title="Customer Service"
                         link="/signin"
                         isLink={isLink}
                     />
                     :
                     <Breadcrumb
                         authUser={authUser}
-                        title="Support"
+                        title="Customer Service"
                         link="/dashboard"
                         authenticatedUser={authenticatedUser}
                         allCommission={allCommission}

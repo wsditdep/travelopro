@@ -366,7 +366,7 @@ const Sidebar = ({ session, isWhite, authenticatedUser, userCommission, allCommi
                                                         height={100}
                                                         width={100}
                                                     />
-                                                    <h3>Support</h3>
+                                                    <h3>Customer Service</h3>
                                                 </div>
 
                                                 <svg
