@@ -2940,14 +2940,6 @@
 
 .recharge-history-wrapper {
 
-    // .green_lite {
-    //     background: rgba(0, 128, 0, 0.133) !important;
-    // }
-
-    // .red_lite {
-    //     background: rgba(169, 0, 0, 0.272) !important;
-    // }
-
     .recharge-history-parent {
         border-radius: 0.5rem;
         padding: 2rem;
@@ -3022,16 +3014,12 @@
             width: 100%;
             object-fit: cover;
         }
-
     }
 }
 
 .colorWhite {
     color: white !important;
 }
-
-.term-condition-page-wrapper {}
-
 
 .isPressedValidation {
     height: 5rem;
@@ -3375,6 +3363,210 @@ input[type="number"] {
     }
 }
 
+.lucky-draw-wrapper {
+    .draw-btn {
+        i {
+            font-size: 2rem;
+        }
+    }
+
+    .draw-wrapper-containers {
+        position: fixed;
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        height: 100%;
+        background: rgba(0, 0, 0, 0.735);
+        z-index: 12;
+        width: 750px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 2rem;
+
+        .draw-wrapper-containers-inner {
+            .luckey-image {
+                height: auto;
+                width: 100%;
+                margin-bottom: 1rem;
+            }
+
+            .coinImage {
+                height: 40%;
+                width: 40%;
+                margin-bottom: 0.4rem;
+            }
+
+            .draw-wrapper-containers-inner-board {
+                position: relative;
+
+                .draw-wrapper-containers-inner-board-dice {
+                    position: absolute;
+                    top: 48%;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+                    width: 88%;
+                    height: 85%;
+                    display: grid;
+                    grid-template-columns: repeat(3, 1fr);
+                    grid-template-rows: repeat(3, 1fr);
+                    gap: 10px;
+
+                    .draw-childs {
+                        background: rgb(255, 255, 255);
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        flex-direction: column;
+                        border-radius: 1rem;
+
+                        .start {
+                            height: 90%;
+                            width: 90%;
+                            cursor: pointer;
+                        }
+
+                        &:nth-child(5) {
+                            background: transparent;
+                        }
+
+                        h3 {
+                            font-size: 1.4rem;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+.draw-complete-container {
+    position: absolute;
+    background: rgb(255, 255, 255);
+    z-index: 12;
+    bottom: 5%;
+    border-radius: 0.2rem;
+    width: 90%;
+
+    h1 {
+        text-align: center;
+        font-size: 1rem;
+        margin: 0.5rem 0rem;
+    }
+
+    p {
+        color: green;
+        font-size: 1rem;
+        font-weight: 600;
+    }
+
+    .draw-complete-wrapper {
+        padding: 1rem;
+        text-align: center;
+
+        button {
+            width: 100%;
+            padding: 0.4rem;
+            font-size: 1rem;
+            font-weight: 600;
+            outline: none;
+            border: none;
+            background: $secondaryColor;
+            color: white;
+            cursor: pointer;
+            margin-top: 1rem;
+        }
+    }
+}
+
+.game-loading {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.848);
+    z-index: 1223;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    h2 {
+        font-size: 1.4rem;
+        color: white;
+    }
+}
+
+.close-game {
+    position: fixed;
+    top: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    height: 4rem;
+    width: 4rem;
+    border: 2px solid rgb(255, 255, 255);
+    border-radius: 50%;
+    z-index: 1222;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+
+    i {
+        color: white;
+        font-size: 2rem;
+    }
+}
+
+.replayBtn {
+    background: #e7b63a;
+    height: 100%;
+    width: 100%;
+    display: grid;
+    place-items: center;
+    border-radius: 50%;
+    font-size: 1.6rem;
+    color: white;
+    border: 4px solid white;
+    cursor: pointer;
+    box-shadow: 0 0 1rem 0 rgba(0, 0, 0, 0.603);
+}
+
+.animateDrawBox {
+    animation: animateDrawBoxAnimation 0.1s linear infinite;
+}
+
+@keyframes animateDrawBoxAnimation {
+    0% {
+        opacity: 0;
+        transform: scale(1);
+    }
+
+    100% {
+        opacity: 1;
+        transform: scale(1.04);
+    }
+}
+
+.animateDrawBoxLastItem {
+    animation: animateDrawBoxAnimation 0.2s linear infinite;
+}
+
+.animateDrawBoxWinner {
+    animation: winnerAnimation 0.2s ease-out infinite alternate-reverse;
+}
+
+@keyframes winnerAnimation {
+    0% {
+        transform: scale(1);
+    }
+
+    100% {
+        transform: scale(1.04);
+    }
+}
+
 @media only screen and (max-width: 768px) {
 
     html {
@@ -3593,6 +3785,14 @@ input[type="number"] {
 
     .spinner-outer-wrapper .spinner-wrapper .spinn-btns button {
         margin-top: 2rem;
+    }
+
+    .lucky-draw-wrapper .draw-wrapper-containers {
+        width: 100%;
+    }
+
+    .lucky-draw-wrapper .draw-wrapper-containers .draw-wrapper-containers-inner .draw-wrapper-containers-inner-board .draw-wrapper-containers-inner-board-dice .draw-childs h3 {
+        font-size: 1rem;
     }
 }
 

@@ -21,6 +21,7 @@ import vip1 from "@/public/costar_assets/icons/beginnerIcon.png"
 import vip2 from "@/public/costar_assets/icons/silverIcon.png"
 import vip3 from "@/public/costar_assets/icons/goldIcon.png"
 import vip4 from "@/public/costar_assets/icons/platinumIcon.png"
+import LuckyDraw from '../draw/LuckyDraw';
 
 const Sidebar = ({ session, isWhite, authenticatedUser, userCommission, allCommission }) => {
     const [isNav, setIsNav] = useState(false);
@@ -53,7 +54,10 @@ const Sidebar = ({ session, isWhite, authenticatedUser, userCommission, allCommi
                     <></>
             }
             <div className="dashboard-navigation-childs">
-                <button className={isWhite ? "colorWhite" : ""} onClick={() => setIsNav(true)}><i className="fa fa-bars"></i></button>
+                <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", gap: "20px" }}>
+                    <LuckyDraw user={JSON.parse(JSON.stringify(authenticatedUser))} />
+                    <button className={isWhite ? "colorWhite" : ""} onClick={() => setIsNav(true)}><i className="fa fa-bars"></i></button>
+                </div>
                 {
                     isNav ? <div className="sidebar-overlay" onClick={() => setIsNav(false)}></div> : <></>
                 }

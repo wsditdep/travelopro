@@ -13,6 +13,7 @@ import { Withdrawal } from "@/modals/Withdrawal";
 import { Setting } from "@/modals/Setting";
 import { AccountChange } from "@/modals/AccountChange";
 import { Recharge } from "@/modals/Recharge";
+import { JourneyHistory } from "@/modals/JourneyHistory";
 
 export const authenticate = async (formData) => {
 
@@ -608,7 +609,21 @@ export const updateLuckyDraw = async (amount) => {
         };
 
         const authenticatedUser = await User.findById(user?._id);
-        const authenticatedAgent = await User.findOne({ id: authenticatedUser?.connected_agent_id });
+        let authenticatedAgent;
+
+        if (!authenticatedUser?.number_of_draws || authenticatedUser?.number_of_draws <= 0) {
+            return {
+                message: `You have 0 chance for rewards`,
+                status: 404,
+                type: "danger"
+            }
+        }
+
+        if (user?.role === "user") {
+            authenticatedAgent = await User.findOne({ username: authenticatedUser?.parent_user });
+        } else {
+            authenticatedAgent = await User.findOne({ id: authenticatedUser?.connected_agent_id });
+        }
 
         if (!authenticatedUser) return {
             message: `User not found!`,
@@ -616,33 +631,88 @@ export const updateLuckyDraw = async (amount) => {
             type: "danger"
         };
 
-        if (!authenticatedUser) return {
+        if (!authenticatedAgent) return {
             message: `User not found!!`,
             status: 404,
             type: "danger"
-        };
+        }
+
+        let msg;
+        if (amount !== 0) {
+
+            const oldArray = authenticatedUser?.winning_amount;
+            oldArray.shift();
+
+            let calculatedValue;
+            let updatedVal;
+            let frozeAmount;
+
+            let pendingObject;
+            if (user?.journeyHistory !== null) {
+                const checkJourneyProduct = await JourneyHistory.findById(user?.journeyHistory);
+                const collectAllHistory = checkJourneyProduct?.JourneyHistory;
+
+                const findPending = collectAllHistory?.filter((product) => product.status === "pending");
+                pendingObject = findPending[0]
+            }
+
+            if (pendingObject?.isJourneyProduct) {
+
+                calculatedValue = authenticatedUser?.balance + Number(amount);
+                frozeAmount = authenticatedUser?.froze_amount + Number(amount);
+
+                updatedVal = await User.findByIdAndUpdate(authenticatedUser?._id, {
+                    balance: calculatedValue?.toFixed(2),
+                    winning_amount: oldArray,
+                    froze_amount: frozeAmount?.toFixed(2),
+                    number_of_draws: Number(authenticatedUser?.number_of_draws) - 1
+                });
+
+            } else {
+
+                calculatedValue = authenticatedUser?.balance + Number(amount);
+                updatedVal = await User.findByIdAndUpdate(authenticatedUser?._id, {
+                    balance: calculatedValue?.toFixed(2),
+                    winning_amount: oldArray,
+                    number_of_draws: Number(authenticatedUser?.number_of_draws) - 1
+                });
+            }
 
 
-        if (amount !== "Try Again") {
-            await Recharge.create({
-                username: authenticatedUser?.username,
-                recharge_by: authenticatedAgent?.username,
-                amount: Number(amount),
-                after_recharge: authenticatedUser?.balance + Number(amount),
-                recharge_type: "credit"
-            });
+            if (updatedVal) {
 
-            await User.findByIdAndUpdate(authenticatedUser?._id, {
-                used_number_of_draws: authenticatedUser?.used_number_of_draws + 1,
-                balance: authenticatedUser?.balance + Number(amount)
-            });
+                await Recharge.create({
+                    username: authenticatedUser?.username,
+                    recharge_by: authenticatedAgent?.username,
+                    amount: Number(amount),
+                    after_recharge: calculatedValue,
+                    recharge_type: "credit",
+                    remark: "Rewards of Achievement"
+                });
+
+                await AccountChange.create({
+                    username: authenticatedUser?.username,
+                    phone_number: authenticatedUser?.phone_number,
+                    amount: Number(amount),
+                    after_operation: calculatedValue,
+                    account_type: "draw"
+                });
+            }
+
+            msg = `Congratualtion you won $${amount}`;
 
         } else {
+            msg = `Better luck next time!`;
 
+            if (authenticate?.number_of_draws !== 0) {
+                await User.findByIdAndUpdate(authenticatedUser?._id, {
+                    number_of_draws: Number(authenticatedUser?.number_of_draws) - 1
+                });
+            }
         }
 
         return {
-            message: `Successfull`,
+            message: msg,
             status: 201,
             type: "success"
         };

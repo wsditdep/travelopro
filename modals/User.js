@@ -163,6 +163,11 @@ const userSchema = new mongoose.Schema({
         type: String,
         default: null
     },
+     number_of_draws: {
+        type: Number,
+        default: null
+    },
+    winning_amount: [],
 }, { timestamps: true });
 
 
